@@ -10,11 +10,12 @@ pacman::p_load(
   here, # Folder management
   finalfit, # Labelling
   gtsummary, # Table summaries
-  anthro # Z-score estimation
+  anthro, # Z-score estimation
+  rio # Import and export dataset
 )
 ```
 
 ```{r load-dataset}
-
+df <- import(here("data", "bono_project.csv"))
 ```
 
