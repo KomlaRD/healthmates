@@ -35,3 +35,60 @@ df <- df |>
   select(-uuid)
 ```
 
+
+## Compute z-scores
+
+```{r mutate-variables}
+# Change Male for M and Female for F
+df$enter_sex_of_the_child[df$enter_sex_of_the_child == "Male"] <- "M"
+
+df$enter_sex_of_the_child[df$enter_sex_of_the_child == "Female"] <- "F"
+
+# Change edema values
+df$edema_present[df$edema_present == "No"] <- "N"
+df$edema_present[df$edema_present == "Yes"] <- "Y"
+```
+
+
+```{r anthro-z_scores-under-five}
+# Z-scores for children
+df_z_scores <- 
+  anthro_zscores(
+    sex = df$enter_sex_of_the_child,
+    age = df$enter_age_in_completed_months,
+    is_age_in_month = TRUE, 
+    weight = df$weight_of_child_kg, 
+    lenhei = df$height_length_of_child_cm, 
+    armc = df$mid_upper_arm_circumference_cm, 
+    oedema = df$edema_present
+)
+```
+
+```{r select-relevant-columns}
+# Select columns to bind to original dataset
+df_z_scores <- df_z_scores |>
+  select(
+    zlen, # length for age z-score
+    flen, # flag length for age
+    zwei, # weight for age z-score
+    fwei, # flag weight for age
+    zwfl, # weight for length z-score
+    fwfl, # flag weight for length
+    zbmi, # bmi z-score
+    fbmi, # Flag bmi z-score
+    zac, # MUAC z-score
+    fac # Flag muac z-score
+  )
+```
+
+
+```{r bind-columns}
+# Merge original dataset and z-scores
+df_merge <- bind_cols(df, df_z_scores)
+```
+
+
+
+
+
+
