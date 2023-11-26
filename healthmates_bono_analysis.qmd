@@ -105,6 +105,11 @@ df_merge <- df_merge |>
       zwei < - 2 ~ "Underweight",
       zwei >= -2 ~ "Normal",
       TRUE ~ NA_character_
+    ),
+    muac_undernutrition = case_when(
+      zac <- 2 ~ "Malnourished",
+      zac >= -2 ~ "Not malnourished",
+      TRUE ~ NA_character_
     )
   )
 ```
