@@ -31,7 +31,7 @@ df <- clean_names(df)
 
 ```{r remove-metaid}
 # Remove metadata
-df |> 
-  select(-)
+df <- df |> 
+  select(-uuid)
 ```
 
