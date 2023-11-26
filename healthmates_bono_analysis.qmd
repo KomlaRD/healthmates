@@ -107,13 +107,29 @@ df_merge <- df_merge |>
       TRUE ~ NA_character_
     ),
     muac_undernutrition = case_when(
-      zac <- 2 ~ "Malnourished",
+      zac < - 2 ~ "Malnourished",
       zac >= -2 ~ "Not malnourished",
       TRUE ~ NA_character_
     )
   )
 ```
 
+```{r select-child}
+df_merge |>
+  select(
+    name_of_the_child,
+    wasting,
+    underweight,
+    stunting,
+    muac_undernutrition
+  ) |>
+  filter(
+    wasting == "Wasting" |
+    underweight == "Underweight" |
+    stunting == "Stunting"|
+    muac_undernutrition == "Malnourished"
+  )
+```
 
 
 
