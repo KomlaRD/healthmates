@@ -87,6 +87,27 @@ df_z_scores <- df_z_scores |>
 df_merge <- bind_cols(df, df_z_scores)
 ```
 
+```{r compute-nutrition-status-under-five}
+# Mutate nutritional status
+df_merge <- df_merge |>
+  mutate(
+    wasting = case_when(
+      zwfl < - 2 ~ "Wasting",
+      zwfl >= -2 ~ "Normal",
+      TRUE ~ NA_character_
+    ),
+    stunting = case_when(
+      zlen < - 2 ~ "Stunting",
+      zlen >= -2 ~ "Normal",
+      TRUE ~ NA_character_
+    ),
+    underweight = case_when(
+      zwei < - 2 ~ "Underweight",
+      zwei >= -2 ~ "Normal",
+      TRUE ~ NA_character_
+    )
+  )
+```
 
 
 
