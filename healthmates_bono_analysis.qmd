@@ -1,0 +1,20 @@
+---
+title: "Healthmates Bono Project"
+author: "Eric Anku"
+format: html
+---
+
+```{r load-packages}
+pacman::p_load(
+  tidyverse, # Data wrangling
+  here, # Folder management
+  finalfit, # Labelling
+  gtsummary, # Table summaries
+  anthro # Z-score estimation
+)
+```
+
+```{r load-dataset}
+
+```
+
