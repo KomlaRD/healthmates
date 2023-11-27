@@ -115,13 +115,14 @@ df_merge <- df_merge |>
 ```
 
 ```{r select-child}
-df_merge |>
+malnourished_df <- df_merge |>
   select(
-    name_of_the_child,
-    wasting,
-    underweight,
-    stunting,
-    muac_undernutrition
+    today, # Date of visit
+    name_of_the_child, # Name of child
+    wasting, # Wasting status
+    underweight, # Underweight status
+    stunting, # Stunting status
+    muac_undernutrition # MUAC status
   ) |>
   filter(
     wasting == "Wasting" |
@@ -131,6 +132,9 @@ df_merge |>
   )
 ```
 
+```{r export-dataset}
+export(malnourished_df, here("data", "malnourished_children.xlsx"))
+```
 
 
 
