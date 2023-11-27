@@ -36,6 +36,11 @@ df <- df |>
 ```
 
 
+```{r rename-variables}
+# Rename column names using dplyr::rename()
+```
+
+
 ## Compute z-scores
 
 ```{r mutate-variables}
