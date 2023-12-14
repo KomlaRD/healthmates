@@ -17,7 +17,7 @@ pacman::p_load(
 ```
 
 ```{r load-dataset}
-df <- import(here("data", "bono_project.csv"))
+df <- import(here("data", "ahafo_project.csv"))
 ```
 
 ```{r glimpse-dataset}
@@ -53,6 +53,7 @@ df$enter_sex_of_the_child[df$enter_sex_of_the_child == "Female"] <- "F"
 df$edema_present[df$edema_present == "No"] <- "N"
 df$edema_present[df$edema_present == "Yes"] <- "Y"
 ```
+
 
 
 ```{r anthro-z_scores-under-five}
