@@ -125,6 +125,7 @@ malnourished_df <- df_merge |>
   select(
     today, # Date of visit
     name_of_the_child, # Name of child
+    enter_sex_of_the_child, # Sex of the child
     wasting, # Wasting status
     underweight, # Underweight status
     stunting, # Stunting status
